@@ -1,1 +1,1 @@
-this repo contains documentation for the printf projects
+ALX Practice for pribtf project
