@@ -1,13 +1,10 @@
-#include <stdarg.h>
-#include <unistd.h>
 #include "main.h"
-
 /**
  * handle_conversion - prints something based on the format passed to it
  * @format: the format for specifier
  * Return: a number
  */
-int (*handle_conversion(const char *format))(va_list params)
+int (*handle_conversion(const char *format))(va_list params, int *counter)
 {
 	int i;
 
@@ -37,7 +34,7 @@ int (*handle_conversion(const char *format))(va_list params)
 int _printf(const char *format, ...)
 {
 	va_list params;
-	int i;
+	int i, count = 0;
 
 	va_start(params, format);
 
@@ -48,13 +45,18 @@ int _printf(const char *format, ...)
 			if (*(format + i + 1) == '%')
 			{
 				write(1, format + ++i, 1);
+				count++;
 				continue;
 			}
-			handle_conversion(format + ++i)(params);
+			handle_conversion(format + ++i)(params, &count);
 		}
 		else
+		{
+
 			write(1, format + i, 1);
+			count++;
+		}
 	}
 
-	return (i);
+	return (count);
 }
