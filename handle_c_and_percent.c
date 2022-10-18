@@ -81,15 +81,16 @@ unsigned int handle_percent(va_list params, buf *output,
 unsigned int handle_p(va_list params, buf *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
-	char *null = "(nil)";
+	char *nil = "(nil)";
 	unsigned long int address;
 	unsigned int count = 0;
 
 	(void)len;
 
 	address = va_arg(params, unsigned long int);
+
 	if (address == '\0')
-		return (_memcpy(output, null, 5));
+		return (_memcpy(output, nil, 5));
 
 	flags |= 32;
 	count += handle_ubase(output, address, "0123456789abcdef",
