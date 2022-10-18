@@ -1,8 +1,8 @@
 #**Printf**
 
-##Platform:
+## Platform:
 *ALX SOFTWARE ENGINEERING - Low Level Language*
 
-##Authors:
+## Authors:
 - Ibekwe Chisom
 - Philip Nwokedi

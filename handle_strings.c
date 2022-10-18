@@ -26,7 +26,7 @@ unsigned int handle_s(va_list args, buf *output,
 {
 	char *str, *null = "(null)";
 	int size;
-	unsigned int ret = 0;
+	unsigned int count = 0;
 
 	(void)flags;
 	(void)len;
@@ -38,19 +38,19 @@ unsigned int handle_s(va_list args, buf *output,
 	for (size = 0; *(str + size);)
 		size++;
 
-	ret += print_string_width(output, flags, wid, prec, size);
+	count += print_string_width(output, flags, wid, prec, size);
 
 	prec = (prec == -1) ? size : prec;
 	while (*str != '\0' && prec > 0)
 	{
-		ret += _memcpy(output, str, 1);
+		count += _memcpy(output, str, 1);
 		prec--;
 		str++;
 	}
 
-	ret += print_neg_width(output, ret, flags, wid);
+	count += print_neg_width(output, count, flags, wid);
 
-	return (ret);
+	return (count);
 }
 
 /**
