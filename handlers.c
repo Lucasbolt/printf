@@ -17,7 +17,7 @@ int handle_precision(va_list args, const char *modifier, char *index);
 unsigned char handle_flags(const char *flag, char *index)
 {
 	int i, j;
-	unsigned char ret = 0;
+	unsigned char count = 0;
 	flag_t flags[] = {
 		{'+', PLUS},
 		{' ', SPACE},
@@ -34,10 +34,10 @@ unsigned char handle_flags(const char *flag, char *index)
 			if (flag[i] == flags[j].flag)
 			{
 				(*index)++;
-				if (ret == 0)
-					ret = flags[j].value;
+				if (count == 0)
+					count = flags[j].value;
 				else
-					ret |= flags[j].value;
+					count |= flags[j].value;
 				break;
 			}
 		}
@@ -45,7 +45,7 @@ unsigned char handle_flags(const char *flag, char *index)
 			break;
 	}
 
-	return (ret);
+	return (count);
 }
 
 /**
