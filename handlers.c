@@ -21,10 +21,7 @@ unsigned char handle_flags(const char *flag, char *index)
 	flag_t flags[] = {
 		{'+', PLUS},
 		{' ', SPACE},
-		{'#', HASH},
-		{'0', ZERO},
-		{'-', NEG},
-		{0, 0}
+		{'#', HASH}
 	};
 
 	for (i = 0; flag[i]; i++)
