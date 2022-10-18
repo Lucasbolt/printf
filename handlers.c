@@ -84,7 +84,7 @@ unsigned char handle_length(const char *modifier, char *index)
  */
 int handle_width(va_list args, const char *modifier, char *index)
 {
-	int value = 0;
+	int val = 0;
 
 	while ((*modifier >= '0' && *modifier <= '9') || (*modifier == '*'))
 	{
@@ -92,18 +92,18 @@ int handle_width(va_list args, const char *modifier, char *index)
 
 		if (*modifier == '*')
 		{
-			value = va_arg(args, int);
-			if (value <= 0)
+			val = va_arg(args, int);
+			if (val <= 0)
 				return (0);
-			return (value);
+			return (val);
 		}
 
-		value *= 10;
-		value += (*modifier - '0');
+		val *= 10;
+		val += (*modifier - '0');
 		modifier++;
 	}
 
-	return (value);
+	return (val);
 }
 
 /**
